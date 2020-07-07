@@ -2,7 +2,7 @@
 ## Getting started
 ```bush
 # clone the project
-git clone https://github.com/iview/iview-admin.git
+https://github.com/wangxiaoqi0123/vue-cli3-vant.git
 
 // install dependencies
 npm install
