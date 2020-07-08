@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="[{nopadding:type==='nopadding'}]"
-    class="container"
-  >
+  <div :class="[{nopadding:type==='nopadding'}]" class="container">
     <!-- :style="{height:browserEnv==='Android'? CH +'px' :'100%'}" -->
     <!-- 防止页面中的按钮置顶 -->
     <div class="form-content">
@@ -13,10 +10,7 @@
         <slot name="main"></slot>
       </main>
     </div>
-    <div
-      class="form-footer"
-      v-if="footer"
-    >
+    <div class="form-footer" v-if="footer">
       <footer>
         <slot name="footer"></slot>
       </footer>
@@ -35,13 +29,12 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       CH: window.document.body.clientHeight
     };
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 <style lang="less" scoped>

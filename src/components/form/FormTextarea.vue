@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="textarea"
-    @click="onClick"
-  >
+  <div class="textarea" @click="onClick">
     <p :class="{'required':required}">{{ label }}</p>
     <van-field
       ref="textarea"
@@ -56,13 +53,13 @@ export default {
       default: () => false
     }
   },
-  data () {
+  data() {
     return {
       value: this.$attrs.modelValue
     };
   },
   methods: {
-    onClick () {
+    onClick() {
       this.$refs.textarea.focus();
       this.$emit("click");
     }
@@ -70,11 +67,11 @@ export default {
   watch: {
     "$attrs.modelValue": {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         this.value = newV;
       }
     },
-    value (newV, oldV) {
+    value(newV, oldV) {
       this.$emit("input", newV);
     }
   }

@@ -2,35 +2,17 @@
   <div class="from_select">
     <div class="select">
       <p :class="{'required':required}">{{ label }}</p>
-      <div
-        class="select_box"
-        @click.stop="open"
-      >
-        <van-field
-          v-model="showName"
-          :placeholder="placeholder"
-          readonly
-        />
-        <div
-          class="icon"
-          v-if="!result || reset"
-        >
+      <div class="select_box" @click.stop="open">
+        <van-field v-model="showName" :placeholder="placeholder" readonly />
+        <div class="icon" v-if="!result || reset">
           <i class="icon-arrows"></i>
         </div>
-        <div
-          class="clear"
-          v-else-if="!disabled"
-          @click.stop="onClear"
-        >
+        <div class="clear" v-else-if="!disabled" @click.stop="onClear">
           <i class="icon iconfont icon-qingchuanniu"></i>
         </div>
       </div>
     </div>
-    <van-popup
-      v-model="show"
-      position="bottom"
-      get-container="#app"
-    >
+    <van-popup v-model="show" position="bottom" get-container="#app">
       <van-picker
         :columns="selectColumns"
         show-toolbar
@@ -88,7 +70,7 @@ export default {
       default: () => false
     }
   },
-  data () {
+  data() {
     return {
       show: false,
       result: "",
@@ -96,7 +78,7 @@ export default {
       showName: ""
     };
   },
-  created () {
+  created() {
     this.result = this.$attrs.sValue;
     if (this.showText) {
       this.selectColumns = this.columns.map(item => {
@@ -109,7 +91,7 @@ export default {
     this.getShowName();
   },
   methods: {
-    onConfirm (value) {
+    onConfirm(value) {
       this.$emit("confirm", value);
       this.show = !this.show;
       if (value.disabled) {
@@ -126,17 +108,17 @@ export default {
         this.showName = value;
       }
     },
-    onCancel () {
+    onCancel() {
       this.show = false;
       this.$emit("cancel");
     },
-    onClear () {
+    onClear() {
       this.result = "";
     },
-    onChange (picker, value, index) {
+    onChange(picker, value, index) {
       this.$emit("change", { picker, value, index });
     },
-    open () {
+    open() {
       if (!this.disabled) {
         this.show = true;
       } else {
@@ -145,7 +127,7 @@ export default {
     },
 
     // 根据 根据value 和数组 显示值
-    getShowName () {
+    getShowName() {
       if (
         (this.result || this.result === 0 || this.result === false) &&
         this.selectColumns.length > 0 &&
@@ -170,13 +152,13 @@ export default {
 
   watch: {
     // model数据传出
-    result (newV) {
+    result(newV) {
       this.$emit("input", newV);
     },
     // model 数据传入
     "$attrs.sValue": {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         this.result = newV;
         this.getShowName();
       }
@@ -186,7 +168,7 @@ export default {
     // 解决数据异步
     columns: {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         if (this.showText) {
           this.selectColumns = newV.map(item => {
             item.text = item[this.showText];

@@ -1,40 +1,19 @@
 <template>
   <div class="date">
-    <div
-      class="date_time"
-      @click="show = !show"
-    >
+    <div class="date_time" @click="show = !show">
       <p :class="{'required':required}">{{ label }}</p>
       <div class="date_box">
-        <van-field
-          v-model="result"
-          :placeholder="placeholder"
-          readonly
-        />
-        <div
-          class="icon"
-          v-if="!result"
-        >
-          <i
-            class="icon-date"
-            :class="{top:browserEnv==='Android'}"
-          ></i>
+        <van-field v-model="result" :placeholder="placeholder" readonly />
+        <div class="icon" v-if="!result">
+          <i class="icon-date" :class="{top:browserEnv==='Android'}"></i>
         </div>
-        <div
-          class="icon"
-          v-else
-          @click.stop="onClear"
-        >
+        <div class="icon" v-else @click.stop="onClear">
           <i class="icon iconfont icon-qingchuanniu"></i>
         </div>
       </div>
     </div>
     <!-- 弹出层 -->
-    <van-popup
-      v-model="show"
-      position="bottom"
-      get-container="#app"
-    >
+    <van-popup v-model="show" position="bottom" get-container="#app">
       <!-- 希望时间 -->
       <van-datetime-picker
         v-model="enterDate"
@@ -61,7 +40,7 @@ export default {
     prop: "dValue"
   },
   filters: {
-    timer (timer) {
+    timer(timer) {
       return "hello";
     }
   },
@@ -122,7 +101,7 @@ export default {
       default: () => false
     }
   },
-  data () {
+  data() {
     return {
       show: false,
       // result: this.$attrs.dValue || "",
@@ -131,7 +110,7 @@ export default {
     };
   },
 
-  mounted () {
+  mounted() {
     // 1. 初始化时间
     if (this.defaultDate) {
       this.enterDate = this.defaultDate;
@@ -161,19 +140,19 @@ export default {
   },
 
   methods: {
-    onConfirm (value) {
+    onConfirm(value) {
       this.timeFormat(value);
       this.show = !this.show;
       this.$emit("confirm", value);
     },
-    onCancel (value) {
+    onCancel(value) {
       this.$emit("cancel");
       this.show = !this.show;
     },
-    onClear () {
+    onClear() {
       this.result = "";
     },
-    timeFormat (val) {
+    timeFormat(val) {
       if (val) {
         let tempVal;
         // 不是数字赋值 非时间戳
@@ -238,12 +217,12 @@ export default {
     // model 数据传入
     "$attrs.dValue": {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         this.timeFormat(newV);
       }
     },
     // model 数据传出
-    result (newVal) {
+    result(newVal) {
       this.$emit("input", newVal);
     }
   }

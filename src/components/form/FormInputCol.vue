@@ -1,9 +1,6 @@
 <template>
   <div class="inp">
-    <p
-      v-if="label"
-      :class="{'required':required}"
-    >{{ label }}</p>
+    <p v-if="label" :class="{'required':required}">{{ label }}</p>
     <div class="inp-box">
       <van-field
         ref="inp"
@@ -11,7 +8,7 @@
         :placeholder="placeholder"
         :readonly="readonly"
         :type="type"
-        :maxlength='maxlength'
+        :maxlength="maxlength"
       />
     </div>
   </div>
@@ -47,10 +44,10 @@ export default {
       default: () => false
     }
   },
-  mounted () {
+  mounted() {
     this.value = this.$attrs.modelValue;
   },
-  data () {
+  data() {
     return {
       value: ""
     };
@@ -58,11 +55,11 @@ export default {
   watch: {
     "$attrs.modelValue": {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         this.value = newV;
       }
     },
-    value (newV, oldV) {
+    value(newV, oldV) {
       this.$emit("input", newV);
     }
   }

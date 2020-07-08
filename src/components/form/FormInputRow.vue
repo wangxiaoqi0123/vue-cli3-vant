@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="inp"
-    @click="onClick"
-  >
+  <div class="inp" @click="onClick">
     <p :class="{'required':required}">{{ label }}</p>
     <div class="inp-box">
       <van-field
@@ -11,7 +8,7 @@
         :placeholder="placeholder"
         :readonly="readonly"
         :type="type"
-        :maxlength='maxlength'
+        :maxlength="maxlength"
       />
     </div>
   </div>
@@ -44,16 +41,16 @@ export default {
       default: () => false
     }
   },
-  mounted () {
+  mounted() {
     this.value = this.$attrs.value;
   },
-  data () {
+  data() {
     return {
       value: ""
     };
   },
   methods: {
-    onClick () {
+    onClick() {
       this.$refs.inp.focus();
       this.$emit("click");
     }
@@ -61,11 +58,11 @@ export default {
   watch: {
     "$attrs.value": {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         this.value = newV;
       }
     },
-    value (newV, oldV) {
+    value(newV, oldV) {
       this.$emit("input", newV);
     }
   }

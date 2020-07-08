@@ -13,7 +13,7 @@
         type="textarea"
         :maxlength="maxlength"
         :placeholder="placeholder"
-        :show-word-limit='textlimit'
+        :show-word-limit="textlimit"
       />
     </div>
   </van-dialog>
@@ -49,7 +49,7 @@ export default {
       default: () => ""
     }
   },
-  data () {
+  data() {
     return {
       show: false,
       message: ""
@@ -60,14 +60,14 @@ export default {
     // 监听v-model传过来的值
     "$attrs.modelValue": {
       deep: true,
-      handler (newV, oldV) {
+      handler(newV, oldV) {
         this.show = !!newV;
       }
     }
   },
-  mounted () { },
+  mounted() {},
   methods: {
-    onBeforeClose (action, done) {
+    onBeforeClose(action, done) {
       if (this.beforeClose) {
         if (!this.message) {
           done(false);
@@ -78,14 +78,14 @@ export default {
         done();
       }
     },
-    onConfirm () {
+    onConfirm() {
       if (this.beforeClose && !this.message) {
         return;
       }
       this.$emit("input", false);
       this.$emit("confirm", this.message);
     },
-    onCancel () {
+    onCancel() {
       this.$nextTick(() => {
         this.$toast.clear();
       });
