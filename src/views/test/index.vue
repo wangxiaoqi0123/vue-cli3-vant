@@ -6,7 +6,7 @@
     <template v-slot:main>
       <ul class="list">
         <li @click="handleMock">Mock 接口测试</li>
-        <li @click="handlePersist">vuex-persist veux持久化测试</li>
+        <li @click="handlePersist">vuex-persist veux持久化测试1</li>
       </ul>
     </template>
   </FormStructure>
