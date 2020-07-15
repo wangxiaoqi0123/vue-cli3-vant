@@ -5,7 +5,6 @@ import local from "./module/local";
 import user from "./module/user";
 import app from "./module/app";
 import permission from "./module/permission";
-import tagsView from "./module/tagsView";
 
 // vuex 数据持久化
 import VuexPersistence from "vuex-persist";
@@ -22,8 +21,7 @@ const store = new Vuex.Store({
     local,
     user,
     app,
-    permission,
-    tagsView
+    permission
   },
   plugins: [vuexLocal.plugin]
 });
