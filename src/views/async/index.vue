@@ -1,5 +1,10 @@
 <template>
-  <div>动态路由权限测试</div>
+  <FormStructure :footer="false">
+    <template v-slot:header>
+      <HeadTitle title="动态权限页面" left-text="返回" left-arrow />
+    </template>
+    <template v-slot:main></template>
+  </FormStructure>
 </template>
 <script>
 export default {

@@ -16,6 +16,7 @@ export default {
     return {
       powermenus: [
         { label: "测试", icon: "whale", path: "/test" },
+        { label: "AL", icon: "whale", path: "/al" },
         { label: "权限", icon: "whale", path: "/async" }
       ]
     };

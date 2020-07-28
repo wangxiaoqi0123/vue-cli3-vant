@@ -12,7 +12,6 @@
         </div>
       </div>
     </div>
-
     <van-popup v-model="show" position="bottom" get-container="#app" @close="$emit('close')">
       <van-picker
         :columns="selectColumns"
