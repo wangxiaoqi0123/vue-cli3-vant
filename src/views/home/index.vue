@@ -3,7 +3,8 @@
     <div class="topBox">
       <van-nav-bar title="首页" left-text right-text />
     </div>
-    <WorkbenchBox title="测试" :menus="powermenus" class="last-workbox" />
+    <WorkbenchBox title="测试" :menus="powermenus" />
+    <WorkbenchBox title="学习" :menus="learnmenus" class="last-workbox" />
   </div>
 </template>
 <script>
@@ -16,9 +17,9 @@ export default {
     return {
       powermenus: [
         { label: "测试", icon: "whale", path: "/test" },
-        { label: "AL", icon: "whale", path: "/al" },
         { label: "权限", icon: "whale", path: "/async" }
-      ]
+      ],
+      learnmenus: [{ label: "AL", icon: "whale", path: "/al" }]
     };
   },
   mounted() {},

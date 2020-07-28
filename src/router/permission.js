@@ -33,13 +33,16 @@ router.beforeEach(async (to, from, next) => {
 
           // 根据角色生成可访问路由图
           const accessRoutes = await store.dispatch("permission/generateRoutes", roles);
-
           // 动态添加可访问路由
           router.addRoutes(accessRoutes);
 
-          // 设置replace: true，这样导航将不会留下历史记录
-          // next({ ...to, replace: true });
-          next();
+          // 避免首页两次重定向
+          if (to.path === "/home") {
+            next();
+          } else {
+            // 设置replace: true，这样导航将不会留下历史记录
+            next({ ...to, replace: true });
+          }
         } catch (error) {
           // 清楚 token 重新登录
           await store.dispatch("user/resetToken");

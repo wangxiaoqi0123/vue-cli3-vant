@@ -68,9 +68,9 @@ export default {
         .dispatch("user/Login", user)
         .then(() => {
           this.loading = false;
-          this.$router.push("/home");
+          this.$router.push({ path: "/home" });
         })
-        .catch(e => {
+        .catch((e) => {
           this.loading = false;
           this.disabled = false;
           this.$toast(e.msg);
