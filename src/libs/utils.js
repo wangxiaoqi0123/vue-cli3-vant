@@ -1,8 +1,8 @@
 export default {
-  install (Vue, options) {
-    Vue.prototype.$util = {
+  install(Vue, options) {
+    Vue.prototype.$utils = {
       // 获取连接参数值
-      getUrlParams (name) {
+      getUrlParams(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) {
@@ -11,7 +11,7 @@ export default {
         return null;
       },
       // 判断设备处于PC还是移动端
-      isIOS () {
+      isIOS() {
         if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
           return true;
         } else {
@@ -19,7 +19,7 @@ export default {
         }
       },
       // 判断安卓或者ios终端
-      testMobileType () {
+      testMobileType() {
         const u = navigator.userAgent;
         const isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; // android终端
         const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); // ios终端
@@ -32,7 +32,7 @@ export default {
         }
       },
       // 校验手机号码
-      isPhone (val) {
+      isPhone(val) {
         var patrn = /^(((1[3456789][0-9]{1})|(15[0-9]{1}))+\d{8})$/;
         if (!patrn.test(val) || val === "") {
           return false;
@@ -41,7 +41,7 @@ export default {
         }
       },
       // 检验车牌号
-      isCarNum (val) {
+      isCarNum(val) {
         var patrn = /^([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1})$/;
         var patrn2 = /^([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF])|([DF]([A-HJ-NP-Z0-9])[0-9]{4})))$/;
         if (!patrn.test(val) && !patrn2.test(val)) {
@@ -51,7 +51,7 @@ export default {
         }
       },
       // 校验车架号
-      isVehicle (val) {
+      isVehicle(val) {
         var patrn = /^[A-HJ-NP-Za-hj-np-z0-9]+$/;
         if (!patrn.test(val) || val === "") {
           return false;
@@ -60,7 +60,7 @@ export default {
         }
       },
       // 检验身份证号码
-      isSfz (idcard) {
+      isSfz(idcard) {
         var Errors = [1, "身份证号码位数不对", "出生日期错误", "身份证号码错误", "身份证地区非法"];
         var area = { 11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古", 21: "辽宁", 22: "吉林", 23: "黑龙江", 31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏", 61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "xinjiang", 71: "台湾", 81: "香港", 82: "澳门", 91: "国外" };
         var Y, JYM;
@@ -111,7 +111,7 @@ export default {
         }
       },
       // 判断输入框是否有表情
-      isEmojiCharacter (substring) {
+      isEmojiCharacter(substring) {
         for (var i = 0; i < substring.length; i++) {
           const hs = substring.charCodeAt(i);
           if (hs >= 0xd800 && hs <= 0xdbff) {
@@ -137,14 +137,14 @@ export default {
             } else if (hs >= 0x3297 && hs <= 0x3299) {
               return true;
             } else if (hs === 0xa9 || hs === 0xae || hs === 0x303d || hs === 0x3030 ||
-              hs === 0x2b55 || hs === 0x2b1c || hs === 0x2b1b || hs === 0x2b50) {
+                            hs === 0x2b55 || hs === 0x2b1c || hs === 0x2b1b || hs === 0x2b50) {
               return true;
             }
           }
         }
       },
       // 日期格式化
-      dateFormat (date, fmt) {
+      dateFormat(date, fmt) {
         var o = {
           "M+": date.getMonth() + 1,
           "d+": date.getDate(),
@@ -161,7 +161,7 @@ export default {
         return fmt;
       },
       // 时间格式化
-      TimeFormat (val, s) {
+      TimeFormat(val, s) {
         if (!val) {
           return "";
         }
@@ -183,7 +183,7 @@ export default {
         return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + second;
       },
       // 日期年月日
-      getDate (n) {
+      getDate(n) {
         var date = new Date();
         date.setDate(date.getDate() + n);
         var year = date.getFullYear();
@@ -194,11 +194,11 @@ export default {
         return year + "-" + month + "-" + day;
       },
       // 最多保留两位小数
-      formatMomey (num) {
+      formatMomey(num) {
         return Math.round(num * 100) / 100;
       },
       // 压缩图片
-      dealImage (path, obj, callback) {
+      dealImage(path, obj, callback) {
         var img = new Image();
         img.src = path;
         img.onload = function () {
@@ -232,7 +232,7 @@ export default {
         };
       },
       // 图片转成base64
-      getImgData (img, dir, next) {
+      getImgData(img, dir, next) {
         var image = new Image();
         image.onload = function () {
           var degree = 0;
@@ -255,7 +255,7 @@ export default {
               drawWidth = -width;
               drawHeight = -height;
               break;
-            // iphone竖屏拍摄，此时home键在下方(正常拿手机的方向)
+              // iphone竖屏拍摄，此时home键在下方(正常拿手机的方向)
             case 6:
               canvas.width = height;
               canvas.height = width;
@@ -263,7 +263,7 @@ export default {
               drawWidth = width;
               drawHeight = -height;
               break;
-            // iphone竖屏拍摄，此时home键在上方
+              // iphone竖屏拍摄，此时home键在上方
             case 8:
               canvas.width = height;
               canvas.height = width;
@@ -279,43 +279,6 @@ export default {
           next(canvas.toDataURL("image/jpeg", 0.8));
         };
         image.src = img;
-      },
-      // 防抖
-      _debounce (fn, delay) {
-        var delay1 = delay || 200;
-        var timer;
-        return function () {
-          var th = this;
-          var args = arguments;
-          if (timer) {
-            clearTimeout(timer);
-          }
-          timer = setTimeout(function () {
-            timer = null;
-            fn.apply(th, args);
-          }, delay1);
-        };
-      },
-      // 节流
-      _throttle (fn, interval) {
-        var last;
-        var timer;
-        var interval1 = interval || 200;
-        return function () {
-          var th = this;
-          var args = arguments;
-          var now = +new Date();
-          if (last && now - last < interval) {
-            clearTimeout(timer);
-            timer = setTimeout(function () {
-              last = now;
-              fn.apply(th, args);
-            }, interval1);
-          } else {
-            last = now;
-            fn.apply(th, args);
-          }
-        };
       }
     };
   }

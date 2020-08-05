@@ -62,6 +62,14 @@ export const constantRoutes = [
       title: "al"
     },
     component: () => import("@/views/learn/al")
+  },
+  {
+    path: "/dt",
+    name: "dt",
+    meta: {
+      title: "dt"
+    },
+    component: () => import("@/views/learn/dt")
   }
 ];
 

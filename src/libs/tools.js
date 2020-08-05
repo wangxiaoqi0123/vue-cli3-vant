@@ -2,12 +2,12 @@
 export const scrollTop = (el, from = 0, to, duration = 500, endCallback) => {
   if (!window.requestAnimationFrame) {
     window.requestAnimationFrame =
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function (callback) {
-        return window.setTimeout(callback, 1000 / 60);
-      };
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+              return window.setTimeout(callback, 1000 / 60);
+            };
   }
   const difference = Math.abs(from - to);
   const step = Math.ceil((difference / duration) * 50);
@@ -66,3 +66,63 @@ export const showTitle = (item, vm) => {
   if (!title) return;
   return (item.meta && item.meta.title) || item.name;
 };
+
+/**
+ * @desc 函数防抖
+ * @param func 函数
+ * @param wait 延迟执行毫秒数
+ * @param immediate true 表立即执行，false 表非立即执行
+ */
+export function _debounce(func, wait, immediate) {
+  let timeout;
+
+  return function () {
+    let context = this;
+    let args = arguments;
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      var callNow = !timeout;
+      timeout = setTimeout(() => {
+        timeout = null;
+      }, wait);
+      if (callNow) func.apply(context, args);
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(context, args);
+      }, wait);
+    }
+  };
+}
+
+/**
+ * @desc 函数节流
+ * @param func 函数
+ * @param wait 延迟执行毫秒数
+ * @param type 1 表时间戳版，2 表定时器版
+ */
+export function _throttle(func, wait, type = 1) {
+  if (type === 1) {
+    var previous = 0;
+  } else if (type === 2) {
+    var timeout;
+  }
+  return function () {
+    let context = this;
+    let args = arguments;
+    if (type === 1) {
+      let now = Date.now();
+
+      if (now - previous > wait) {
+        func.apply(context, args);
+        previous = now;
+      }
+    } else if (type === 2) {
+      if (!timeout) {
+        timeout = setTimeout(() => {
+          timeout = null;
+          func.apply(context, args);
+        }, wait);
+      }
+    }
+  };
+}

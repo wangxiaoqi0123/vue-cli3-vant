@@ -19,7 +19,10 @@ export default {
         { label: "测试", icon: "whale", path: "/test" },
         { label: "权限", icon: "whale", path: "/async" }
       ],
-      learnmenus: [{ label: "AL", icon: "whale", path: "/al" }]
+      learnmenus: [
+        { label: "AL", icon: "whale", path: "/al" },
+        { label: "DT", icon: "whale", path: "/dt" }
+      ]
     };
   },
   mounted() {},
