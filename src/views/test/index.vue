@@ -1,7 +1,7 @@
 <template>
   <FormStructure :footer="false">
     <template v-slot:header>
-      <HeadTitle title="测试页面" left-arrow backPath class="test"></HeadTitle>
+      <HeadTitle title="测试页面" left-arrow backPath class="test" />
     </template>
     <template v-slot:main>
       <ul class="list">
@@ -13,6 +13,7 @@
 </template>
 <script>
 import { LoginService } from "@/api";
+import { loading } from "@/decorator";
 export default {
   data() {
     return {};
@@ -21,13 +22,15 @@ export default {
   watch: {},
   mounted() {},
   methods: {
+    @loading("加载中...")
     async handleMock() {
       try {
-        this.$toast.loading({ message: "加载中...", duration: 0 });
         const res = await LoginService.getInfo();
-        this.$toast.clear();
+        a = b;
         console.log("res :>> ", res);
-      } catch (error) {}
+      } catch (error) {
+        this.$toast("error");
+      }
     },
     handlePersist() {
       this.$store.commit("local/SET_USER", "132");
