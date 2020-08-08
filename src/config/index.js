@@ -1,7 +1,7 @@
 let BASE_API = null;
 switch (process.env.VUE_APP_ENV) {
   case "dev":
-    BASE_API = "http://192.168.137.210:8181";
+    BASE_API = "http://192.168.137.61:8081";
     break;
   case "test":
     BASE_API = "";

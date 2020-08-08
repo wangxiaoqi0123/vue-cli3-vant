@@ -1,20 +1,24 @@
-import { BaseService } from "@/api/baseapi/BaseService.js";
-import { ServiceConfig } from "@/api/baseapi/ServiceConfig.js";
+import request from "@/libs/request";
 
-export class LoginService extends BaseService {
-  /** 登录 */
-  static login(params) {
-    return this.postApi(ServiceConfig.LoginService.login, params);
+export class LoginService {
+  static login() {
+    return request({
+      url: "/user/login",
+      method: "post"
+    });
   }
-  /** 注册 */
-  static register(params) {
-    return this.postApi(ServiceConfig.LoginService.register, params);
+
+  static getInfo() {
+    return request({
+      url: "/user/roles",
+      method: "get"
+    });
   }
-  static getInfo(params) {
-    return this.getApi(ServiceConfig.LoginService.getInfo);
-  }
-  /** 测试 mock */
+
   static parameterQuery() {
-    return this.getApi(ServiceConfig.LoginService.parameterQuery);
+    return request({
+      url: "/parameter/query",
+      method: "get"
+    });
   }
 }

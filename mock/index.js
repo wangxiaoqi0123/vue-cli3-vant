@@ -1,3 +1,6 @@
+// 根据环境设置基础Api路径
+import config from "@/config";
+let { BASE_API } = config;
 // 首先引入Mock
 const Mock = require("mockjs");
 
@@ -19,6 +22,6 @@ files.keys().forEach((key) => {
 configArray.forEach((item) => {
   for (let [path, target] of Object.entries(item)) {
     let protocol = path.split("|");
-    Mock.mock(new RegExp("^" + protocol[1]), protocol[0], target);
+    Mock.mock(new RegExp("^" + BASE_API + protocol[1]), protocol[0], target);
   }
 });
