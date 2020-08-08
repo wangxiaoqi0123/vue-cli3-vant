@@ -8,10 +8,10 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {};
   },
-  mounted () {
+  mounted() {
   }
 };
 </script>
@@ -27,7 +27,7 @@ body {
   padding: 0;
   background-color: #fff;
 }
-s #app {
+#app {
   .size;
 }
 .refresh_box {
