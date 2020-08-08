@@ -24,7 +24,7 @@ export default {
   },
   computed: {},
   watch: {},
-  mounted() {},
+  mounted() { },
   methods: {
     handleClick(val) {
       console.log("this.value :>> ", this.value);
