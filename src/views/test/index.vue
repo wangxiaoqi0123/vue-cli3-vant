@@ -20,13 +20,12 @@ export default {
   },
   computed: {},
   watch: {},
-  mounted() {},
+  mounted() { },
   methods: {
     @loading("加载中...")
     async handleMock() {
       try {
         const res = await LoginService.getInfo();
-        a = b;
         console.log("res :>> ", res);
       } catch (error) {
         this.$toast("error");
