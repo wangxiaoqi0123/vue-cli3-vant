@@ -25,12 +25,12 @@ export default {
   },
   computed: {},
   watch: {},
-  mounted() {},
+  mounted() { },
   methods: {}
 };
 </script>
 <style lang='less' scoped>
-.parent-box{
+.parent-box {
   border: 1px solid #000;
   box-sizing: border-box;
 }
