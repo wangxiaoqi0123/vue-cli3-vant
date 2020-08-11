@@ -70,6 +70,22 @@ export const constantRoutes = [
       title: "dt"
     },
     component: () => import("@/views/learn/dt")
+  },
+  {
+    path: "/cv",
+    name: "cv",
+    meta: {
+      title: "cv"
+    },
+    component: () => import("@/views/learn/cv")
+  },
+  {
+    path: "/de",
+    name: "de",
+    meta: {
+      title: "de"
+    },
+    component: () => import("@/views/learn/de")
   }
 ];
 

@@ -21,7 +21,9 @@ export default {
       ],
       learnmenus: [
         { label: "AL", icon: "whale", path: "/al" },
-        { label: "DT", icon: "whale", path: "/dt" }
+        { label: "DT", icon: "whale", path: "/dt" },
+        { label: "CV", icon: "whale", path: "/cv" },
+        { label: "DE", icon: "whale", path: "/de" }
       ]
     };
   },
