@@ -94,6 +94,22 @@ export const constantRoutes = [
       title: "vd"
     },
     component: () => import("@/views/learn/vd")
+  },
+  {
+    path: "/isscroll",
+    name: "isscroll",
+    meta: {
+      title: "isscroll"
+    },
+    component: () => import("@/views/learn/isScroll")
+  },
+  {
+    path: "/sync",
+    name: "sync",
+    meta: {
+      title: "sync"
+    },
+    component: () => import("@/views/learn/sync")
   }
 ];
 

@@ -44,7 +44,8 @@ export default {
         },
         {
           text: "女",
-          value: "F"
+          value: "F",
+          disabled: true
         }
       ]
     };

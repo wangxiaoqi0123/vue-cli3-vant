@@ -38,4 +38,7 @@ body {
   background-color: #fff;
   min-height: 100vh;
 }
+body {
+  -webkit-overflow-scrolling: touch;
+}
 </style>

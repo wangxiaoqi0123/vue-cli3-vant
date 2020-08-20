@@ -240,6 +240,10 @@ export default {
       color: @form-label-color;
       padding: 30px 0 20px;
       margin: 0;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -khtml-user-elect: none;
+      user-select: none;
     }
 
     .required::before {

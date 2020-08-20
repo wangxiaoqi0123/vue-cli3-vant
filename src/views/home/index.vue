@@ -24,7 +24,9 @@ export default {
         { label: "DT", icon: "whale", path: "/dt" },
         { label: "CV", icon: "whale", path: "/cv" },
         { label: "DE", icon: "whale", path: "/de" },
-        { label: "VD", icon: "whale", path: "/vd" }
+        { label: "VD", icon: "whale", path: "/vd" },
+        { label: "IsScroll", icon: "whale", path: "/isscroll" },
+        { label: "SYNC", icon: "whale", path: "/sync" }
       ]
     };
   },
