@@ -1,7 +1,6 @@
 <template>
   <div class="child">
     <p>我是子组件</p>
-    <p>-------------</p>
     <input class="inp" @input="onInput" :value="text" />
   </div>
 </template>
